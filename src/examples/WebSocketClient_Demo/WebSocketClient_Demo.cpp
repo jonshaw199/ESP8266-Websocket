@@ -88,7 +88,7 @@ void WebSocketClientDemo::loop()
 
     // capture the value of analog 1, send it along
     pinMode(1, INPUT);
-    data = String(analogRead(1));
+    data = "Hello world!";
 
     webSocketClient.sendData(data);
   }
