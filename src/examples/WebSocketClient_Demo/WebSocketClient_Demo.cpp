@@ -1,5 +1,6 @@
-#include <ESP8266WiFi.h>
-#include <WebSocketClient.h>
+
+#include "WebSocketClient_Demo.h"
+#include "WebSocketClient.h"
 
 #include "pre.h"
 
@@ -8,12 +9,12 @@ const char *password = STRINGIFY(JSPASS);
 char path[] = "/raw";
 char host[] = "ws.postman-echo.com";
 
-WebSocketClient webSocketClient;
+WebSocketClient WebSocketClientDemo::webSocketClient;
 
 // Use WiFiClient class to create TCP connections
-WiFiClient client;
+WiFiClient WebSocketClientDemo::client;
 
-void setup()
+void WebSocketClientDemo::setup()
 {
   Serial.begin(JS_BAUD);
   delay(10);
@@ -71,7 +72,7 @@ void setup()
   }
 }
 
-void loop()
+void WebSocketClientDemo::loop()
 {
   String data;
 

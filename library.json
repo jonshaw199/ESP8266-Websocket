@@ -1,0 +1,5 @@
+{
+  "build": {
+    "flags": ["-D JSSSID=js-guest", "-D JSPASS=B1g5lams!"]
+  }
+}
