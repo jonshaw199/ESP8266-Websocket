@@ -89,7 +89,7 @@ static unsigned char PADDING[64] = {
   }
 
 /* MD5 initialization. Begins an MD5 operation, writing a new context.  */
-void MD5Init (MD5_CTX *context)                                       /* context */
+void MD5Init2 (MD5_CTX *context)                                       /* context */
 {
   context->count[0] = context->count[1] = 0;
   /* Load magic initialization constants.  */
@@ -103,7 +103,7 @@ void MD5Init (MD5_CTX *context)                                       /* context
  * operation, processing another message block, and updating the
  * context.
  */
-void MD5Update (MD5_CTX *context, unsigned char *input,unsigned int inputLen) /* length of input block */
+void MD5Update2 (MD5_CTX *context, unsigned char *input,unsigned int inputLen) /* length of input block */
 {
   unsigned int i, index, partLen;
 
@@ -136,7 +136,7 @@ void MD5Update (MD5_CTX *context, unsigned char *input,unsigned int inputLen) /*
 /* MD5 finalization. Ends an MD5 message-digest operation, writing the
  * the message digest and zeroizing the context.
  */
-void MD5Final (unsigned char digest[16], MD5_CTX *context)
+void MD5Final2 (unsigned char digest[16], MD5_CTX *context)
 {
   unsigned char bits[8];
   unsigned int index, padLen;
@@ -147,10 +147,10 @@ void MD5Final (unsigned char digest[16], MD5_CTX *context)
   /* Pad out to 56 mod 64.  */
   index = (unsigned int)((context->count[0] >> 3) & 0x3f);
   padLen = (index < 56) ? (56 - index) : (120 - index);
-  MD5Update (context, PADDING, padLen);
+  MD5Update2 (context, PADDING, padLen);
 
   /* Append length (before padding) */
-  MD5Update (context, bits, 8);
+  MD5Update2 (context, bits, 8);
 
   /* Store state in digest */
   Encode (digest, context->state, 16);
@@ -296,8 +296,8 @@ static void MD5_memset (POINTER output, int value, unsigned int len)
 /* Calculate MD5 Digest into md5Digest */
 void MD5(unsigned char strInputString[], unsigned char md5Digest[], unsigned int len){
 	MD5_CTX ctx;
-	MD5Init(&ctx);
+	MD5Init2(&ctx);
 
-	MD5Update(&ctx, strInputString, len);
-	MD5Final(md5Digest, &ctx);
+	MD5Update2(&ctx, strInputString, len);
+	MD5Final2(md5Digest, &ctx);
 }
