@@ -116,10 +116,6 @@ bool WebSocketClient::analyzeRequest()
     {
 #ifdef DEBUGGING
       Serial.println("Got Header: " + temp);
-      Serial.print("temp: ");
-      Serial.print(temp);
-      Serial.print("length: ");
-      Serial.println(temp.length());
 #endif
       if (!foundupgrade && temp.startsWith("Upgrade: websocket"))
       {
