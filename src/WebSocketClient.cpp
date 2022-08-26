@@ -104,7 +104,7 @@ bool WebSocketClient::analyzeRequest()
     Serial.println("Waiting...");
   }
 
-  // TODO: More robust string extraction
+  // TODO: More robust string extraction <---
   while ((bite = socket_client->read()) != -1)
   {
 
@@ -129,8 +129,12 @@ bool WebSocketClient::analyzeRequest()
     if (!socket_client->available())
     {
       delay(20);
+      Serial.println("Delaying...");
     }
   }
+#ifdef DEBUGGING
+  Serial.println("Done getting headers");
+#endif
 
   key += "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
   uint8_t *hash;
