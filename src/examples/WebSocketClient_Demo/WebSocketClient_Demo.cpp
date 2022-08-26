@@ -6,8 +6,8 @@
 
 const char *ssid = STRINGIFY(JSSSID);
 const char *password = STRINGIFY(JSPASS);
-char path[] = "/raw";
-char host[] = "ws.postman-echo.com";
+char path[] = STRINGIFY(WS_PATH);
+char host[] = STRINGIFY(WS_HOST);
 
 WebSocketClient WebSocketClientDemo::webSocketClient;
 
@@ -42,7 +42,7 @@ void WebSocketClientDemo::setup()
   delay(5000);
 
   // Connect to the websocket server
-  if (client.connect("echo.websocket.org", 80))
+  if (client.connect(STRINGIFY(WS_HOST), WS_PORT))
   {
     Serial.println("Connected");
   }
