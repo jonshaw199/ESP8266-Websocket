@@ -86,8 +86,6 @@ void WebSocketClientDemo::loop()
       Serial.println(data);
     }
 
-    // capture the value of analog 1, send it along
-    pinMode(1, INPUT);
     data = "Hello world!";
 
     webSocketClient.sendData(data);

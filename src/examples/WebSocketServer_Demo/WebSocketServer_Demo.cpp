@@ -62,7 +62,7 @@ void sendClientData(int pin)
 void WebSocketServerDemo::setup()
 {
 
-  Serial.begin(9600);
+  Serial.begin(JS_BAUD);
   SC16IS750.begin();
 
   WiFly.setUart(&SC16IS750);
