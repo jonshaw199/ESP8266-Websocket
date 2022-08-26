@@ -16,7 +16,7 @@ WiFiClient WebSocketClientDemo::client;
 
 void WebSocketClientDemo::setup()
 {
-  Serial.begin(JS_BAUD);
+  Serial.begin(9600);
   delay(10);
 
   // We start by connecting to a WiFi network
@@ -87,7 +87,8 @@ void WebSocketClientDemo::loop()
     }
 
     data = "Hello world!";
-
+    Serial.print("Sending data: ");
+    Serial.println(data);
     webSocketClient.sendData(data);
   }
   else
