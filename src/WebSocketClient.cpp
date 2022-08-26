@@ -101,7 +101,9 @@ bool WebSocketClient::analyzeRequest()
   while (socket_client->connected() && !socket_client->available())
   {
     delay(100);
+#ifdef DEBUGGING
     Serial.println("Waiting...");
+#endif
   }
 
   // TODO: More robust string extraction <---
@@ -113,7 +115,11 @@ bool WebSocketClient::analyzeRequest()
     if ((char)bite == '\n')
     {
 #ifdef DEBUGGING
-      Serial.print("Got Header: " + temp);
+      Serial.println("Got Header: " + temp);
+      Serial.print("temp: ");
+      Serial.print(temp);
+      Serial.print("length: ");
+      Serial.println(temp.length());
 #endif
       if (!foundupgrade && temp.startsWith("Upgrade: websocket"))
       {
@@ -129,7 +135,9 @@ bool WebSocketClient::analyzeRequest()
     if (!socket_client->available())
     {
       delay(20);
+#ifdef DEBUGGING
       Serial.println("Delaying...");
+#endif
     }
   }
 #ifdef DEBUGGING
@@ -329,6 +337,9 @@ int WebSocketClient::timedRead()
 {
   while (!socket_client->available())
   {
+#ifdef DEBUGGING
+    Serial.println("timedRead delaying");
+#endif
     delay(20);
   }
 
