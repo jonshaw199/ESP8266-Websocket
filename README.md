@@ -1,4 +1,4 @@
-## Websocket Client and Server for ESP-8266
+## Websocket Client and Server for ~ESP-8266~ ESP-32
 
 This is a simple library that implements a Websocket client and server running on an ESP-8266.
 
