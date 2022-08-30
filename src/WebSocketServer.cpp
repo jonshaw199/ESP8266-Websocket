@@ -11,7 +11,7 @@
 #endif
 
 #include "sha1.h"
-#include "Base64.h"
+#include "JSBase64.h"
 
 bool WebSocketServer::handshake(Client &client)
 {
