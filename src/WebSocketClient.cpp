@@ -88,9 +88,12 @@ bool WebSocketClient::analyzeRequest()
   socket_client->print(F("Sec-WebSocket-Key: "));
   socket_client->print(key);
   socket_client->print(CRLF);
-  socket_client->print(F("Sec-WebSocket-Protocol: "));
-  socket_client->print(protocol);
-  socket_client->print(CRLF);
+  if (protocol != nullptr)
+  {
+    socket_client->print(F("Sec-WebSocket-Protocol: "));
+    socket_client->print(protocol);
+    socket_client->print(CRLF);
+  }
   socket_client->print(F("Sec-WebSocket-Version: 13\r\n"));
   socket_client->print(CRLF);
 
